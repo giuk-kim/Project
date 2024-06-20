@@ -1,5 +1,7 @@
 package com.exam.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +61,7 @@ public class CartController {
 		MemberDTO memberDTO = (MemberDTO)m.getAttribute("login");
 		String userid = memberDTO.getUserid();
 		
-		CartDTO searchDTO = cartService.cartList(userid);
+		List<CartDTO> searchDTO = cartService.cartList(userid);
 		m.addAttribute("cartList", searchDTO);
 		
 		
