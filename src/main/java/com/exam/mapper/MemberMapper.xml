@@ -26,7 +26,7 @@
 	</select>
  
  	<select id="findById" parameterType="string" resultType="MemberDTO">
-	select userid, passwd, username
+	select *
 	from member
 	where userid = #{userid}
 	</select>
