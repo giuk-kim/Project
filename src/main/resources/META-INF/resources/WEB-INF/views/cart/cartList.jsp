@@ -4,15 +4,15 @@
 <div class="container">
     <h2>장바구니</h2>
     <hr>
-    <c:forEach var="dto" items="${cartList}">
+    <c:forEach var="dto" items="${cartList}">      
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label class="form-label">번호</label>
                         <input type="text" class="form-control" value="${dto.num}" disabled>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label class="form-label">상품명</label>
                         <input type="text" class="form-control" value="${dto.poname}" disabled>
                     </div>
@@ -32,4 +32,7 @@
             </div>
         </div>
     </c:forEach>
+   <!--   <a href="buyGoods" class="btn btn-primary mt-2">구매</a> -->
+    <a href="cartDelete?num=${dto.num}" class="btn btn-primary mt-2">삭제</a>
+    
 </div>
