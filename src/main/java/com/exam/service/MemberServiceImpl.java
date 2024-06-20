@@ -32,4 +32,10 @@ public class MemberServiceImpl implements MemberService{
 		return memberMapper.mypage(userid);
 	}
 
+
+	@Override
+	public MemberDTO findById(String userid) {
+		return memberMapper.findById(userid);
+	}
+
 }
