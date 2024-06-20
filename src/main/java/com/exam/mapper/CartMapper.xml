@@ -17,6 +17,13 @@
 		from cart
 		where userid=#{userid}
 	</select>
+	
+	<!-- 장바구니에서 삭제 -->
+   <delete id="cartDelete" parameterType="int">
+   delete from cart
+   where num=#{num}
+   </delete>
+   
    
 </mapper>
 

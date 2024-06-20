@@ -56,7 +56,7 @@ public class CartController {
 		
 		int n = cartService.cartAdd(cartDTO);
 		
-		return "main";
+		return "cartList";
 	}
 	
 	@GetMapping("/cartList")
@@ -74,5 +74,19 @@ public class CartController {
 		return "cartList";
 	}
 	
+	@GetMapping("/cartDelete")
+	public String cartDelete(ModelMap m) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		MemberDTO memberDTO = (MemberDTO)auth.getPrincipal();
+		
+		CartDTO cartDTO = new CartDTO();
+		int num = cartDTO.getNum();
+		num=11;
+		
+		int n = cartService.cartDelete(num);
+		
+		return "main";
+	}
 	
 }
