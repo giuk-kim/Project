@@ -40,6 +40,7 @@
 				<input type="password" class="form-control" name="passwd2"
 					id="passwd2">
 			</div>
+		</div>	
 			<div class="col-sm-3">
 				<span id="pwdcheck" class="fs-5"></span>
 			</div>
