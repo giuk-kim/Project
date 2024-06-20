@@ -25,6 +25,11 @@
 		where userid=#{userid}
 	</select>
  
+ 	<select id="findById" parameterType="string" resultType="MemberDTO">
+	select userid, passwd, username
+	from member
+	where userid = #{userid}
+	</select>
   
    
 </mapper>
