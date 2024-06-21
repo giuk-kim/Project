@@ -20,32 +20,32 @@ import com.exam.dto.MemberDTO;
 import com.exam.service.CartService;
 
 @Controller
-@SessionAttributes(names = {"healthRetrieve"})
+@SessionAttributes(names = { "healthRetrieve" })
 public class CartController {
-	
+
 	Logger logger = LoggerFactory.getLogger(getClass());
-	
+
 	@Autowired
 	CartService cartService;
-	
+
 	@GetMapping("/cartAdd")
 	public String cartAdd(ModelMap m) {
-		
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		MemberDTO memberDTO = (MemberDTO)auth.getPrincipal();
-		HealthDTO healthDTO =(HealthDTO)m.getAttribute("healthRetrieve");
-		
-		logger.info("logger:{}",healthDTO);
-		logger.info("logger:{}",memberDTO);
-		
+
+		MemberDTO memberDTO = (MemberDTO) auth.getPrincipal();
+		HealthDTO healthDTO = (HealthDTO) m.getAttribute("healthRetrieve");
+
+		logger.info("logger:{}", healthDTO);
+		logger.info("logger:{}", memberDTO);
+
 		String userid = memberDTO.getUserid();
 		String poname = healthDTO.getPoname();
 		String price = healthDTO.getPrice();
 		String period = healthDTO.getPeriod();
 		String pt_count = healthDTO.getPt_count();
 		String ponum = healthDTO.getPonum();
-		
+
 		CartDTO cartDTO = new CartDTO();
 		cartDTO.setUserid(userid);
 		cartDTO.setPonum(ponum);
@@ -53,40 +53,38 @@ public class CartController {
 		cartDTO.setPrice(price);
 		cartDTO.setPeriod(period);
 		cartDTO.setPt_count(pt_count);
-		
+
 		int n = cartService.cartAdd(cartDTO);
-		
-		return "cartList";
+
+		return "main";
 	}
-	
+
 	@GetMapping("/cartList")
 	public String cartList(ModelMap m) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		MemberDTO memberDTO = (MemberDTO)auth.getPrincipal();
+
+		MemberDTO memberDTO = (MemberDTO) auth.getPrincipal();
 		String userid = memberDTO.getUserid();
-		
+
 		List<CartDTO> searchDTO = cartService.cartList(userid);
 		m.addAttribute("cartList", searchDTO);
-		
-		
+
 		return "cartList";
 	}
-	
-	@GetMapping("/cartDelete")
-	public String cartDelete(ModelMap m) {
-		
+
+	@PostMapping("/cartDelete")
+	public String cartDelete(@RequestParam int num, ModelMap m) {
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		MemberDTO memberDTO = (MemberDTO)auth.getPrincipal();
-		
-		CartDTO cartDTO = new CartDTO();
-		int num = cartDTO.getNum();
-		num=11;
+		MemberDTO memberDTO = (MemberDTO) auth.getPrincipal();
+
+		logger.info("Deleting cart item with num: {}", num);
 		
 		int n = cartService.cartDelete(num);
-		
-		return "main";
+
+
+		return "redirect:cartList";
 	}
-	
+
 }
