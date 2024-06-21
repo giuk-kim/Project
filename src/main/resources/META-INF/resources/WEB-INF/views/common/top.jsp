@@ -7,7 +7,7 @@
                 <div class="row">
                     <nav class="navbar navbar-expand-lg">
                      
-                        <a class="navbar-brand ms-2 fs-2 fw-bold text-black" href="#">${userid}</a>
+                        <a class="navbar-brand ms-1 fs-1 fw-bold text-black" href="#">${userid}</a>
                         <div class="collapse navbar-collapse">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -18,7 +18,7 @@
                         <div class="collapse navbar-collapse">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin">Admin</a>
+                                    <a class="nav-link" href="buyGoods">BuyGoods</a>
                                 </li>
                             </ul>
                         </div>                        
