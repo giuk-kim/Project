@@ -13,7 +13,7 @@
    
   	<!-- cartList 목록 보기 -->
 	<select id="cartList" parameterType="string" resultType="CartDTO">
-		select userid, num,ponum, poname, price, period, pt_count
+		select userid, num,ponum, poname, price, period, pt_count,cart_date
 		from cart
 		where userid=#{userid}
 	</select>
@@ -24,6 +24,8 @@
    where num=#{num}
    </delete>
    
+   
+
    
 </mapper>
 

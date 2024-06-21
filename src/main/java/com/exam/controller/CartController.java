@@ -20,20 +20,20 @@ import com.exam.dto.MemberDTO;
 import com.exam.service.CartService;
 
 @Controller
-@SessionAttributes(names = { "healthRetrieve" })
+@SessionAttributes(names = { "healthRetrieve","cartList" })
 public class CartController {
 
 	Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	CartService cartService;
-
+	
 	@GetMapping("/cartAdd")
 	public String cartAdd(ModelMap m) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
 		MemberDTO memberDTO = (MemberDTO) auth.getPrincipal();
+		
 		HealthDTO healthDTO = (HealthDTO) m.getAttribute("healthRetrieve");
 
 		logger.info("logger:{}", healthDTO);
@@ -74,7 +74,7 @@ public class CartController {
 	}
 
 	@PostMapping("/cartDelete")
-	public String cartDelete(@RequestParam int num, ModelMap m) {
+	public String cartDelete(@RequestParam("num") int num, ModelMap m) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		MemberDTO memberDTO = (MemberDTO) auth.getPrincipal();
@@ -86,5 +86,8 @@ public class CartController {
 
 		return "redirect:cartList";
 	}
+	
+
+
 
 }
