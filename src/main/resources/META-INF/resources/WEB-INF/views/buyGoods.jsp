@@ -28,9 +28,9 @@
 </head>
 <body>
  <div class="App">
-	<jsp:include page="common/adminTop.jsp" flush="true" /><br>
+	<jsp:include page="common/top.jsp" flush="true" /><br>
 	<hr>
-	<jsp:include page="cart/admin.jsp" flush="true" />
+	<jsp:include page="cart/buyGoods.jsp" flush="true" />
  </div>
 </body>
 </html>

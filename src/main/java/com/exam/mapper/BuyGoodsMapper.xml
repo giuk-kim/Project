@@ -13,6 +13,12 @@
          (#{dto.userid}, #{dto.ponum}, #{dto.poname}, #{dto.price}, #{dto.period}, #{dto.pt_count}, #{dto.cart_date})
     </foreach>
 </insert>
+
+<select id="buyGoodsList" parameterType="string" resultType="BuyGoodsDTO">
+select *
+from buygoods
+where userid=#{userid}
+</select>
    
 </mapper>
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.exam.dto.BuyGoodsDTO;
 import com.exam.dto.CartDTO;
 import com.exam.mapper.BuyGoodsMapper;
 
@@ -19,6 +20,11 @@ public class BuyGoodsServiceImpl implements BuyGoodsService {
 	@Override
 	public int buyGoods(List<CartDTO> listCartDTO) {
 		return buyGoodsMapper.buyGoods(listCartDTO);
+	}
+
+	@Override
+	public List<BuyGoodsDTO> buyGoodsList(String userid) {
+		return buyGoodsMapper.buyGoodsList(userid);
 	}
 
 }
