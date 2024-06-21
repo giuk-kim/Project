@@ -45,15 +45,12 @@ public class HealthController {
 		MemberDTO login=(MemberDTO)auth.getPrincipal();
 		System.out.println(login);
 		
-		if(login!=null) {
+		HealthDTO dto = healthService.HealthRetrieve(ponum);
+		m.addAttribute("healthRetrieve", dto);
+		logger.info("logger:{}",dto);
 		
-			HealthDTO dto = healthService.HealthRetrieve(ponum);
-			m.addAttribute("healthRetrieve", dto);
-			logger.info("logger:{}",dto);
-		
-			return "healthRetrieve";
-		}
-		return "redirect:login";
+		return "healthRetrieve";
+
 	}
 	
 	
