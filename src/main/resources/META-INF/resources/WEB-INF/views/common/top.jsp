@@ -15,6 +15,13 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="admin">Admin</a>
+                                </li>
+                            </ul>
+                        </div>                        
                         <ul class="navbar-nav">
                         	<!--  인증이 안된 사용자 -->
         					<sec:authorize access="isAnonymous()">

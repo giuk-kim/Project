@@ -13,6 +13,14 @@
                         <label class="form-label">번호</label>
                         <input type="text" class="form-control" value="${dto.num}" disabled>
                     </div>
+                   <div class="col-md-2">
+                        <label class="form-label">아이디</label>
+                        <input type="text" class="form-control" value="${dto.userid}" disabled>
+                    </div>
+                   <div class="col-md-2">
+                        <label class="form-label">상품번호</label>
+                        <input type="text" class="form-control" value="${dto.ponum}" disabled>
+                    </div>                                       
                     <div class="col-md-2">
                         <label class="form-label">상품명</label>
                         <input type="text" class="form-control" value="${dto.poname}" disabled>
@@ -30,6 +38,10 @@
                         <input type="text" class="form-control" value="${dto.pt_count}" disabled>
                     </div>
                     <div class="col-md-2">
+                        <label class="form-label">날짜</label>
+                        <input type="text" class="form-control" value="${dto.cart_date}" disabled>
+                    </div>                    
+                    <div class="col-md-2">
                         <form action="cartDelete" method="post">
                             <input type="hidden" name="num" value="${dto.num}"/>
                             <button type="submit" class="btn btn-primary mt-4">삭제</button>
@@ -39,5 +51,10 @@
             </div>
         </div>
     </c:forEach>
-    <a href="main" class="btn btn-primary mt-3">구매</a>
+    <form action="buy" method="post">
+       	<c:forEach var="dto" items="${cartList}">
+          	<input type="hidden" name="num" value="${dto.num}">  
+       	</c:forEach>
+       	<button type="submit" class="btn btn-primary mt-4">구매</button>
+    </form>    
 </div>
